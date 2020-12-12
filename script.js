@@ -8,6 +8,7 @@ let level = 1;
 let counter = 0;
 let tries = 5;
 let score = 0;
+let hiScore = 0;
 
 function init() {
 
@@ -17,6 +18,11 @@ function init() {
     generateRandom();
     updateTries();
     uptdateScore();
+    updateHiScore();
+}
+
+function updateHiScore() {
+document.getElementById('hiScore').innerHTML = hiScore;
 }
 
 function loadSaved() {
@@ -24,6 +30,8 @@ function loadSaved() {
     let savedMax = localStorage.getItem('max');
     let savedTries = localStorage.getItem('tries');
     let savedScore = localStorage.getItem('score');
+    let savedHiScore = localStorage.getItem('hiScore');
+    hiScore = JSON.parse(savedHiScore);
     score = JSON.parse(savedScore);
     level = JSON.parse(savedLevel);
     max = JSON.parse(savedMax);
@@ -105,7 +113,11 @@ function checkAns() {
             correct.classList.add('d-none');
         }, 3000);
         max += 5;
-
+        if (score > hiScore) {
+            hiScore = score;
+            let savedHiScore = JSON.stringify(hiScore);
+            localStorage.setItem('hiScore', savedHiScore);
+        }
     } else {
         answerInput.value = null;
         score -= 5
@@ -123,6 +135,7 @@ function checkAns() {
             setTimeout(() => {
                 document.getElementById('restart').classList.add('d-none');
             }, 3000);
+
             startNewGame();
         }
     }

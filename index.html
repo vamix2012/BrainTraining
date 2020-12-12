@@ -24,11 +24,6 @@
             <button onclick="checkAns()" type="button" class="mb-3 btn btn-primary">Check Answer</button>
         </div>
 
-        <div class="progress">
-            <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100"
-                aria-valuemin="0" aria-valuemax="100"></div>
-        </div>
-
         <div id="correct" class="alert alert-success d-none" role="alert">
             Correct!
         </div>
@@ -41,6 +36,7 @@
 
         <div id="startScreen" class="mainDiv startScreen">
             <h1 class="mb-2 mt-5">Welcome to Brain Training v1.3</h1> 
+            <h3>Hi-Score : <span id="hiScore">0</span></h3>
             <h4>Hope you enjoy training!</h4>
             <button type="button" onclick="loadSaveGame()" class="btn btn-success mt-3">Load Saved Game</button>
             <button type="button" onclick="startNewGame()" class="btn btn-primary mt-4">Start New Game</button>
